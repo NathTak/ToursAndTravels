@@ -1,0 +1,69 @@
+﻿@model IEnumerable<ToursAndTravels.Models.Trip>
+
+@{
+    ViewData["Title"] = "Trips";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="text-primary">
+            <i class="fas fa-road"></i> Trip List
+        </h2>
+        <a asp-action="Create" class="btn btn-success">
+            <i class="fas fa-plus"></i> Add New Trip
+        </a>
+    </div>
+
+    <table class="table table-striped table-hover table-bordered shadow">
+        <thead class="table-dark">
+            <tr>
+                <th>Trip Number</th>
+                <th><i class="fas fa-calendar-alt"></i> Date</th>
+                <th><i class="fas fa-car"></i> Vehicle No</th>
+                <th><i class="fas fa-map-marker-alt"></i> From</th>
+                <th><i class="fas fa-map-marker-alt"></i> To</th>
+                <th><i class="fas fa-rupee-sign"></i> Trip Rent</th>
+                <th class="text-center"><i class="fas fa-cogs"></i> Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var trip in Model)
+            {
+                <tr class="align-middle">
+                    <td><strong class="text-primary">@trip.TripNumber</strong></td>
+                    <td>@trip.Date.ToString("dd-MMM-yyyy")</td>
+                    <td class="vehicle-no">@trip.VehicleNo</td>
+                    <td>@trip.FromLocation</td>
+                    <td>@trip.ToLocation</td>
+                    <td><strong class="text-success">@trip.TripRent.ToString("C")</strong></td>
+                    <td class="text-center">
+                        <div class="btn-group">
+                            <a asp-action="Edit" asp-route-id="@trip.TripId" class="btn btn-warning btn-sm">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a asp-action="Details" asp-route-id="@trip.TripId" class="btn btn-info btn-sm">
+                                <i class="fas fa-info-circle"></i>
+                            </a>
+                            <a asp-action="Delete" asp-route-id="@trip.TripId" class="btn btn-danger btn-sm"
+                               onclick="return confirm('Are you sure you want to delete this trip?');">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- ✅ CSS for Styling -->
+<style>
+    .table-hover tbody tr:hover {
+        background-color: #f0f0f0 !important;
+        transition: 0.3s;
+    }
+
+    .btn-group a {
+        margin: 2px;
+    }
+</style>

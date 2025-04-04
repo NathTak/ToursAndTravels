@@ -1,0 +1,48 @@
+﻿@model ToursAndTravels.Models.TripExpense
+
+@{
+    ViewData["Title"] = "Create Trip Expense";
+}
+
+<h2 class="text-success"><i class="fas fa-plus-circle"></i> Add New Expense</h2>
+
+<form asp-action="Create">
+    <div class="card shadow">
+        <div class="card-body">
+            <div class="mb-3">
+                <label class="form-label">Trip ID</label>
+                <input asp-for="TripID" class="form-control" required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Driver Advance</label>
+                <input asp-for="DriverAdvance" class="form-control" required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Loading Charges</label>
+                <input asp-for="LoadingCharges" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Police Entry Fee</label>
+                <input asp-for="PoliceEntryFee" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Commission</label>
+                <input asp-for="Commission" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Diesel</label>
+                <input asp-for="Diesel" class="form-control" />
+            </div>
+
+            <div class="d-flex justify-content-between">
+                <a asp-action="Index" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back</a>
+                <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Save</button>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,63 @@
+﻿@model ToursAndTravels.Models.Trip
+
+@{
+    ViewData["Title"] = "Edit Trip";
+}
+
+<h2 class="mb-4 text-primary"><i class="fas fa-edit"></i> Edit Trip</h2>
+
+<div class="card shadow-lg p-4">
+    <div class="card-body">
+        <h4 class="text-dark">Trip Details</h4>
+        <hr />
+
+        <form asp-action="Edit">
+            <input type="hidden" asp-for="TripId" />
+
+            <div class="mb-3">
+                <label asp-for="Date" class="form-label"><i class="fas fa-calendar-alt"></i> Trip Date</label>
+                <input asp-for="Date" class="form-control" type="date" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="VehicleNo" class="form-label"><i class="fas fa-car"></i> Vehicle No</label>
+                <input asp-for="VehicleNo" class="form-control" />
+                <span asp-validation-for="VehicleNo" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="FromLocation" class="form-label"><i class="fas fa-map-marker-alt"></i> From</label>
+                <input asp-for="FromLocation" class="form-control" />
+                <span asp-validation-for="FromLocation" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="ToLocation" class="form-label"><i class="fas fa-map-marker-alt"></i> To</label>
+                <input asp-for="ToLocation" class="form-control" />
+                <span asp-validation-for="ToLocation" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="TripRent" class="form-label"><i class="fas fa-rupee-sign"></i> Trip Rent</label>
+                <input asp-for="TripRent" class="form-control" type="number" step="0.01" />
+                <span asp-validation-for="TripRent" class="text-danger"></span>
+            </div>
+
+            <div class="d-flex justify-content-between mt-4">
+                <a asp-action="Index" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-left"></i> Back to List
+                </a>
+                <button type="submit" class="btn btn-warning">
+                    <i class="fas fa-save"></i> Update Trip
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

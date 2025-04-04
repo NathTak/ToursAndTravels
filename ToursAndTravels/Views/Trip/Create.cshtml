@@ -1,0 +1,74 @@
+﻿@model ToursAndTravels.Models.Trip
+
+@{
+    ViewData["Title"] = "Create Trip";
+}
+
+<h2 class="mb-4 text-primary"><i class="fas fa-plus-circle"></i> Create New Trip</h2>
+
+<div class="card shadow-lg p-4">
+    <form asp-action="Create">
+        <div class="row">
+            <!-- Trip Date -->
+            <div class="col-md-6">
+                <div class="form-group mb-3">
+                    <label asp-for="Date" class="form-label fw-bold">Trip Date</label>
+                    <input asp-for="Date" type="date" class="form-control" />
+                    <span asp-validation-for="Date" class="text-danger"></span>
+                </div>
+            </div>
+
+            <!-- Vehicle Number -->
+            <div class="col-md-6">
+                <div class="form-group mb-3">
+                    <label asp-for="VehicleNo" class="form-label fw-bold">Vehicle No.</label>
+                    <input asp-for="VehicleNo" class="form-control" placeholder="Enter Vehicle Number" />
+                    <span asp-validation-for="VehicleNo" class="text-danger"></span>
+                </div>
+            </div>
+
+            <!-- From Location -->
+            <div class="col-md-6">
+                <div class="form-group mb-3">
+                    <label asp-for="FromLocation" class="form-label fw-bold">From</label>
+                    <input asp-for="FromLocation" class="form-control" placeholder="Starting Location" />
+                    <span asp-validation-for="FromLocation" class="text-danger"></span>
+                </div>
+            </div>
+
+            <!-- To Location -->
+            <div class="col-md-6">
+                <div class="form-group mb-3">
+                    <label asp-for="ToLocation" class="form-label fw-bold">To</label>
+                    <input asp-for="ToLocation" class="form-control" placeholder="Destination" />
+                    <span asp-validation-for="ToLocation" class="text-danger"></span>
+                </div>
+            </div>
+
+            <!-- Trip Rent -->
+            <div class="col-md-12">
+                <div class="form-group mb-3">
+                    <label asp-for="TripRent" class="form-label fw-bold">Trip Rent (₹)</label>
+                    <input asp-for="TripRent" type="number" step="0.01" class="form-control" placeholder="Enter Rent Amount" />
+                    <span asp-validation-for="TripRent" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Submit & Back Buttons -->
+        <div class="d-flex justify-content-between mt-3">
+            <a asp-action="Index" class="btn btn-outline-secondary">
+                <i class="fas fa-arrow-left"></i> Back to List
+            </a>
+            <button type="submit" class="btn btn-success">
+                <i class="fas fa-check-circle"></i> Create Trip
+            </button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

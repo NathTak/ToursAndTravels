@@ -1,0 +1,33 @@
+﻿@model IEnumerable<ToursAndTravels.Models.ProfitLossReport>
+
+@{
+    ViewData["Title"] = "Profit & Loss Report";
+}
+
+<h2 class="text-center">📊 Profit & Loss Report</h2>
+
+<table class="table table-bordered table-striped mt-4">
+    <thead class="thead-dark">
+        <tr>
+            <th>Trip Date</th>
+            <th>Vehicle No</th>
+            <th>Trip Rent (₹)</th>
+            <th>Total Expense (₹)</th>
+            <th>Profit / Loss (₹)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var report in Model)
+        {
+            <tr>
+                <td>@report.TripDate.ToString("dd-MM-yyyy")</td>
+                <td>@report.VehicleNo</td>
+                <td>@report.TripRent.ToString("N2")</td>
+                <td>@report.TotalExpense.ToString("N2")</td>
+                <td class="@(report.ProfitOrLoss < 0 ? "text-danger" : "text-success")">
+                    @(report.ProfitOrLoss < 0 ? "Loss: " + report.ProfitOrLoss.ToString("N2") : "Profit: " + report.ProfitOrLoss.ToString("N2"))
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

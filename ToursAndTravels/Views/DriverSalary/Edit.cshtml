@@ -1,0 +1,32 @@
+﻿@model ToursAndTravels.Models.DriverSalary
+
+@{
+    ViewData["Title"] = "Edit Salary";
+}
+
+<h2 class="text-center text-primary">Edit Driver Salary</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="SalaryId" />
+
+    <div class="form-group">
+        <label>Select Driver</label>
+        <select asp-for="DriverId" class="form-control" asp-items="@(new SelectList(ViewBag.Drivers, "DriverId", "DriverName"))">
+            <option value="">-- Select Driver --</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Salary Date</label>
+        <input asp-for="SalaryDate" type="date" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Salary Amount</label>
+        <input asp-for="SalaryAmount" type="number" class="form-control" min="1" />
+    </div>
+    <div class="form-group">
+        <label>Notes</label>
+        <textarea asp-for="Notes" class="form-control"></textarea>
+    </div>
+    <button type="submit" class="btn btn-success">Update</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

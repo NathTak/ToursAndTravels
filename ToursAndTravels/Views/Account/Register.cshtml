@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="container">
+    <div class="register-box">
+        <h2 class="text-center">Register</h2>
+        <form method="post">
+            <div class="form-group">
+                <label>User ID</label>
+                <input type="text" name="userId" class="form-control" placeholder="Choose a User ID" required />
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email" class="form-control" placeholder="Enter your Email" required />
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" name="password" class="form-control" placeholder="Choose a Password" required />
+            </div>
+            <button type="submit" class="btn btn-success btn-block">Register</button>
+        </form>
+        <p class="text-danger text-center">@ViewBag.Message</p>
+        <p class="text-center">
+            <a href="/Account/Login">Already have an account? Login</a>
+        </p>
+    </div>
+</div>
+
+<style>
+    .container {
+        max-width: 400px;
+        margin: 50px auto;
+    }
+    .register-box {
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+    }
+    .btn {
+        margin-top: 10px;
+    }
+    h2 {
+        color: #333;
+    }
+</style>

@@ -1,0 +1,52 @@
+﻿@model ToursAndTravels.Models.TripExpense
+
+@{
+    ViewData["Title"] = "Expense Details";
+}
+
+<h2 class="text-primary"><i class="fas fa-file-invoice-dollar"></i> Expense Details</h2>
+
+<div class="card shadow mt-3">
+    <div class="card-header bg-info text-white">
+        <h4><i class="fas fa-receipt"></i> Expense Summary</h4>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered table-hover">
+            <tbody>
+                <tr>
+                    <th><i class="fas fa-truck"></i> Trip ID</th>
+                    <td>@Model.TripID</td>
+                </tr>
+                <tr>
+                    <th><i class="fas fa-user-tie"></i> Driver Advance</th>
+                    <td>@Model.DriverAdvance.ToString("C")</td>
+                </tr>
+                <tr>
+                    <th><i class="fas fa-dolly"></i> Loading Charges</th>
+                    <td>@Model.LoadingCharges.ToString("C")</td>
+                </tr>
+                <tr>
+                    <th><i class="fas fa-shield-alt"></i> Police Entry Fee</th>
+                    <td>@Model.PoliceEntryFee.ToString("C")</td>
+                </tr>
+                <tr>
+                    <th><i class="fas fa-percent"></i> Commission</th>
+                    <td>@Model.Commission.ToString("C")</td>
+                </tr>
+                <tr>
+                    <th><i class="fas fa-gas-pump"></i> Diesel</th>
+                    <td>@Model.Diesel.ToString("C")</td>
+                </tr>
+                <tr class="table-info">
+                    <th><i class="fas fa-calculator"></i> Total Expense</th>
+                    <td><strong>@Model.TotalExpense.ToString("C")</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="d-flex justify-content-between">
+            <a asp-action="Index" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back to List</a>
+            <a asp-action="Edit" asp-route-id="@Model.ExpenseID" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+        </div>
+    </div>
+</div>

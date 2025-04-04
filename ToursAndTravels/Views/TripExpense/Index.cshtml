@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ToursAndTravels.Models.TripExpense>
+
+@{
+    ViewData["Title"] = "Trip Expenses";
+}
+
+<h2 class="text-primary"><i class="fas fa-file-invoice-dollar"></i> Trip Expenses</h2>
+
+<a asp-action="Create" class="btn btn-success mb-3"><i class="fas fa-plus"></i> Add New Expense</a>
+
+<table class="table table-bordered table-striped">
+    <thead class="bg-info text-white">
+        <tr>
+            <th>Trip ID</th>
+            <th>Driver Advance</th>
+            <th>Loading Charges</th>
+            <th>Police Entry Fee</th>
+            <th>Commission</th>
+            <th>Diesel</th>
+            <th>Total Expense</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.TripID</td>
+                <td>@item.DriverAdvance.ToString("C")</td>
+                <td>@item.LoadingCharges.ToString("C")</td>
+                <td>@item.PoliceEntryFee.ToString("C")</td>
+                <td>@item.Commission.ToString("C")</td>
+                <td>@item.Diesel.ToString("C")</td>
+                <td><strong>@item.TotalExpense.ToString("C")</strong></td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.ExpenseID" class="btn btn-info btn-sm"><i class="fas fa-eye"></i> View</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

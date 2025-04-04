@@ -1,0 +1,21 @@
+﻿@model ToursAndTravels.Models.Driver
+
+@{
+    ViewData["Title"] = "Driver Details";
+}
+
+<h2 class="text-info"><i class="fas fa-eye"></i> Driver Details</h2>
+
+<div class="card shadow">
+    <div class="card-body">
+        <h5><strong>Name:</strong> @Model.DriverName</h5>
+        <p><strong>Contact:</strong> @Model.ContactNumber</p>
+        <p><strong>License:</strong> @Model.LicenseNumber</p>
+        <p><strong>Address:</strong> @Model.Address</p>
+
+        <div class="d-flex justify-content-between">
+            <a asp-action="Index" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back</a>
+            <a asp-action="Edit" asp-route-id="@Model.DriverId" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+        </div>
+    </div>
+</div>

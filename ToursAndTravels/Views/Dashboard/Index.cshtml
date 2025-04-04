@@ -1,0 +1,169 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<!-- ✅ Enhanced Scrollable Navbar -->
+<div class="navbar-container">
+    <button class="nav-scroll-btn left" onclick="scrollNav(-200)">&#10094;</button>
+    <nav class="navbar-scroll">
+        <ul class="nav-list">
+            <li><a class="nav-link" asp-controller="Trip" asp-action="Index"><i class="fas fa-route"></i> Trips</a></li>
+            <li><a class="nav-link" asp-controller="TripExpense" asp-action="Index"><i class="fas fa-wallet"></i> Expenses</a></li>
+            <li><a class="nav-link" asp-controller="Driver" asp-action="Index"><i class="fas fa-user-tie"></i> Drivers</a></li>
+            <li><a class="nav-link" asp-controller="ProfitLossReport" asp-action="Index"><i class="fas fa-chart-line"></i> Reports</a></li>
+            <li><a class="nav-link text-warning font-weight-bold" asp-controller="Account" asp-action="Logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </nav>
+    <button class="nav-scroll-btn right" onclick="scrollNav(200)">&#10095;</button>
+</div>
+
+<!-- ✅ Dashboard Content (Same as before) -->
+<div class="container mt-5">
+    <h2 class="text-center font-weight-bold text-primary">🚀 Welcome to Your Dashboard</h2>
+    <p class="text-center text-muted">Manage your business efficiently with this control panel.</p>
+
+    <!-- ✅ Dashboard Cards Section -->
+    <div class="row mt-4">
+        <div class="col-md-3">
+            <a asp-controller="Trip" asp-action="Index" class="card dashboard-card">
+                <div class="card-body">
+                    <i class="fas fa-route fa-3x text-primary"></i>
+                    <h5 class="mt-3">Manage Trips</h5>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-3">
+            <a asp-controller="TripExpense" asp-action="Index" class="card dashboard-card">
+                <div class="card-body">
+                    <i class="fas fa-wallet fa-3x text-success"></i>
+                    <h5 class="mt-3">Manage Expenses</h5>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-3">
+            <a asp-controller="DriverSalary" asp-action="Index" class="card dashboard-card">
+                <div class="card-body">
+                    <i class="fas fa-user-tie fa-3x text-info"></i>
+                    <h5 class="mt-3">Manage Drivers Salaries</h5>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-3">
+            <a asp-controller="ProfitLossReport" asp-action="Index" class="card dashboard-card">
+                <div class="card-body">
+                    <i class="fas fa-chart-line fa-3x text-warning"></i>
+                    <h5 class="mt-3">View Reports</h5>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- ✅ Dark Mode Toggle Button -->
+    <div class="text-center mt-4">
+        <button class="btn btn-dark" onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
+    </div>
+</div>
+
+<!-- ✅ Custom Styles -->
+<style>
+    /* Scrollable Navbar */
+    .navbar-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #007bff;
+        padding: 10px;
+        position: relative;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .navbar-scroll {
+        overflow-x: auto;
+        white-space: nowrap;
+        scroll-behavior: smooth;
+        width: 80%;
+    }
+
+    .nav-list {
+        display: flex;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+        .nav-list li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+
+        .nav-list a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 15px;
+            transition: background 0.3s ease-in-out;
+            border-radius: 8px;
+        }
+
+            .nav-list a:hover {
+                background: #ffdd57;
+                color: black !important;
+            }
+
+    /* Navigation Scroll Buttons */
+    .nav-scroll-btn {
+        background: rgba(255, 255, 255, 0.6);
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        font-size: 20px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        border-radius: 50%;
+        transition: 0.3s;
+    }
+
+        .nav-scroll-btn:hover {
+            background: white;
+        }
+
+    .left {
+        left: 10px;
+    }
+
+    .right {
+        right: 10px;
+    }
+
+    /* Hide Scrollbar */
+    .navbar-scroll::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Dark Mode */
+    body.dark-mode {
+        background-color: #121212;
+        color: white;
+    }
+
+    .dark-mode .dashboard-card {
+        background: #1e1e1e;
+        color: white;
+    }
+
+    .dark-mode .navbar-container {
+        background: #222;
+    }
+</style>
+
+<!-- ✅ Scripts -->
+<script>
+    function scrollNav(distance) {
+        document.querySelector('.navbar-scroll').scrollBy({ left: distance, behavior: 'smooth' });
+    }
+
+    function toggleDarkMode() {
+        document.body.classList.toggle("dark-mode");
+    }
+</script>

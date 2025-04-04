@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ToursAndTravels</title>
+
+    <!-- SEO & Performance Meta Tags -->
+    <meta name="description" content="Tours and Travels Management System - Manage trips, expenses, and driver salaries efficiently." />
+    <meta name="author" content="ToursAndTravels Team" />
+
+    <!-- Bootstrap & Custom CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" integrity="sha384..." crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ToursAndTravels.styles.css" asp-append-version="true" />
+
+    <!-- FontAwesome Icons (Optional) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha384..." crossorigin="anonymous">
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+            <div class="container">
+                <a class="navbar-brand fw-bold" asp-area="" asp-controller="Home" asp-action="Index">
+                    <i class="fas fa-bus"></i> ToursAndTravels
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link text-white @(ViewData["Title"] == "Home" ? "active fw-bold" : "")" asp-area="" asp-controller="Dashboard" asp-action="Index">
+                                <i class="fas fa-home"></i> Home
+                            </a>
+                        </li>
+                        @* <li class="nav-item">
+                            <a class="nav-link text-white @(ViewData["Title"] == "Driver Salaries" ? "active fw-bold" : "")" asp-area="" asp-controller="DriverSalary" asp-action="Index">
+                                <i class="fas fa-money-bill-wave"></i> Driver Salaries
+                            </a>
+                        </li> *@
+                        <li class="nav-item">
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <a href="@Url.Action("ChangePassword", "Account")" class="btn btn-warning text-dark">
+                                    Change Password
+                                </a>
+
+                            }
+                        </li> 
+                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <!-- Sticky Footer -->
+    <footer class="bg-dark text-white text-center py-3 mt-auto">
+        <div class="container">
+            &copy; @DateTime.Now.Year - <strong>ToursAndTravels</strong> |
+            <a asp-area="" asp-controller="Home" asp-action="Privacy" class="text-light">Privacy</a>
+        </div>
+    </footer>
+
+    <!-- jQuery, Bootstrap JS with CDN Fallback -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384..." crossorigin="anonymous"></script>
+    <script>
+        window.jQuery || document.write('<script src="~/lib/jquery/dist/jquery.min.js"><\/script>')
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384..." crossorigin="anonymous"></script>
+    <script>
+        if (typeof bootstrap === "undefined") {
+            document.write('<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"><\/script>');
+        }
+    </script>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
